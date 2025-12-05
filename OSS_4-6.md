@@ -187,5 +187,3 @@ git config --설정범위 설정변수 설정값
 ### Git 저장소 삭제
 rm -rf .git
 - .git 삭제 시 해당 폴더는 더 이상 Git 저장소가 아님
-rm -rf .git
-- .git 삭제 시 해당 폴더는 더 이상 Git 저장소가 아
