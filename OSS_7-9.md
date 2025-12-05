@@ -1,0 +1,77 @@
+# 07~09 원격 수업 정리
+
+## 07. 깃 커밋과 로그
+
+### 깃 3 영역
+- **작업 영역(Working Directory)**: 탐색기 상의 폴더 하부  
+- **스테이징 영역(Staging Area)**: 저장소의 `.git` 폴더의 파일 index  
+- **깃 저장소(Git Repository)**: `.git` 폴더에 저장된 버전 관리 정보  
+
+### 파일 생성 후 add, commit 수행
+- `git add <file>`  
+  - 파일을 Working Directory → Staging Area로 이동(복사)
+- `git commit`  
+  - Staging Area의 내용을 Git Repository로 이동(버전 관리)
+
+### 깃 상태 보기
+- `git status` : 저장소 현재 상태 확인
+  - `git status --long` : 기본 상태 표시  
+  - `git status -s` : 간단히 표시  
+  - `git config --global --edit` : 도움말 보기  
+
+### untracked file (추적되지 않는 파일)
+- 처음 만들어진 파일은 Git에 관리되지 않음  
+- 추가하려면 `git add <file>` 후 커밋 가능  
+- 추가와 커밋은 동시에 실행 불가  
+
+### Add와 Unstaging
+- `git rm --cached <file>`  
+  - Staging Area에서 제거, Working Directory에는 그대로 유지  
+
+### 커밋(Commit)
+- 스냅샷을 찍어 버전 관리  
+- 커밋 메시지 필요
+  - `git commit` : 기본 편집기에서 메시지 입력  
+  - `git commit -m 'message'` : 메시지 직접 입력  
+  - `git commit -a -m 'message'` : 추가 + 커밋 동시에 실행  
+  - `git commit -am 'message'` : 위와 동일
+
+### 커밋 로그 확인
+- `git log` : 로그 이력 표시  
+- `git log --oneline` : 한 줄로 요약 표시 (커밋 ID 7자리, HEAD/브랜치, 메시지)  
+- `git log -p` : 로그 + 파일 변경 사항 표시  
+
+### 로그 결과 이해
+- SHA-1 해시 알고리즘 사용 (160비트, 40자리 16진수)  
+- 커밋 ID로 커밋 구분 가능, 앞 4~7자리만 사용 가능  
+
+### 커밋 정보 확인
+- `git show` : 마지막 커밋(HEAD) 정보  
+- `git show --oneline` : 한 줄 요약 + 파일 차이  
+- `git show -s` : 파일 차이 제외  
+- `git show [HEAD]` : 지정한 HEAD 정보  
+- `git show [commitID]` : 특정 커밋 정보  
+
+---
+
+## 08. 로그 이력과 과거 여행
+
+### 로그 옵션
+- `git log --graph` : 문자 그림으로 로그 시각화  
+- `git log --reverse` : 오래된 순으로 표시 (`--graph`와 함께 사용 불가)  
+- `git log --all` : 모든 브랜치 로그 표시  
+- `git log -n <숫자>` : 최근 n개 로그 표시  
+
+### 커밋 이동 (Checkout)
+- `git checkout HEAD~` : HEAD 이전 커밋으로 이동  
+- `git checkout -` : 이전 checkout 위치로 이동  
+- `git checkout main` : 브랜치 마지막 커밋으로 이동  
+- `git checkout [branch]` : 다른 브랜치로 이동  
+- `git checkout -b [newBranch]` : 새 브랜치 생성 + 이동  
+
+### 커밋 이동 (Switch)
+- `git switch -d` : 이전 커밋으로 이동  
+- `git switch [branch]` : 다른 브랜치로 이동  
+- `git switch -c [newBranch]` : 새 브랜치 생성 + 이동  
+
+---
